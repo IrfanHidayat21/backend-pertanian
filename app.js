@@ -44,7 +44,7 @@ let authenticate2 = (req, res, next) => {
             res.status(401).send(err);
         } else {
             // jwt is valid
-            req.admin_id = decoded._id;
+            req.admin_id = decoded._userId;
             next();
         }
     });
@@ -302,10 +302,10 @@ let verifySession = (req, res, next) => {
 
 // GET /list
 // Purpose: Get all lists
-app.get('/users', authenticate2, (req, res) => {
+app.get('/users', (req, res) => {
     // we want to return an array of all the lists in the database
     User.find({
-        _id: req.params.id
+        _userId: req.params.id
     }).then((lists) => {
     res.send(lists);
     })
@@ -317,7 +317,7 @@ app.get('/users', authenticate2, (req, res) => {
 
 // PATCH /list/:id
 // Purpose: Update a specified list
-app.patch('/users/:id', authenticate2, (req, res) => {
+app.patch('/users/:id', (req, res) => {
     // We want to update the specified list (list document with id in the URL) with the new values specified in the JSON body of the request
     User.findOneAndUpdate({ _id: req.params.id }, {
         $set: req.body

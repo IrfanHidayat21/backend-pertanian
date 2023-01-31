@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 
 
 // JWT Secret
-const jwtSecret = "00198750097227807796rtereeerdgfdf54jd3447204183";
+const jwtSecret = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY3NTE2NzEwNSwiaWF0IjoxNjc1MTY3MTA1fQ.VRxb2iWWjraZGRwahXBa0lGIugvHsd4ppQ7Dczp0C4g";
 
 const AdminSchema = new mongoose.Schema({
     email: {
