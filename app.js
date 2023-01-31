@@ -302,7 +302,7 @@ let verifySession = (req, res, next) => {
 
 // GET /list
 // Purpose: Get all lists
-app.get('/users', authenticate, (req, res) => {
+app.get('/users', authenticate2, (req, res) => {
     // we want to return an array of all the lists in the database
     User.find({
         _id: req.params.id
@@ -317,7 +317,7 @@ app.get('/users', authenticate, (req, res) => {
 
 // PATCH /list/:id
 // Purpose: Update a specified list
-app.patch('/users/:id', authenticate, (req, res) => {
+app.patch('/users/:id', authenticate2, (req, res) => {
     // We want to update the specified list (list document with id in the URL) with the new values specified in the JSON body of the request
     User.findOneAndUpdate({ _id: req.params.id }, {
         $set: req.body
@@ -328,7 +328,7 @@ app.patch('/users/:id', authenticate, (req, res) => {
 
 // DELETE /list/:id
 // Purpose: Delete a list
-app.delete('/users/:id', authenticate, (req, res) => {
+app.delete('/users/:id', authenticate2, (req, res) => {
     // We want to delete the specified list (document with id in the URL)
     
     User.findOneAndRemove({
